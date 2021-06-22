@@ -1,4 +1,4 @@
-# todo_hive
+# TODO APP
 
 A new To Do app using Flutter and Hive DB for training skill on using local DB with Hive
 
@@ -13,7 +13,9 @@ A new To Do app using Flutter and Hive DB for training skill on using local DB w
 ### Screen with some Todos
 ![alt text](https://github.com/dungngminh/ToDo-app/blob/master/screenshots/screen%20with%20some%20todo.png)
 
-
+## Version
+  #### (wWILL UPDATE SOON) beta 2: on development => add function: update, rebuild UI, change add to do screen to dialog to s1mplify UI
+  #### beta 1: update function: add, display, delete (using long press) and s1mple UI
 
 ## Getting Started
 
