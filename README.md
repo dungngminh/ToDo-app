@@ -1,6 +1,19 @@
 # todo_hive
 
-A new To Do app using Flutter and Hive DB for training dungngminh's skill
+A new To Do app using Flutter and Hive DB for training skill on using local DB with Hive
+
+## Some Screenshots
+
+MainScreen
+![alt text](https://github.com/dungngminh/ToDo-app/blob/master/screenshots/mainscreen.png)
+
+Add To Do Screen
+![alt text](https://github.com/dungngminh/ToDo-app/blob/master/screenshots/add%20to%20do.png)
+
+Screen with some Todos
+![alt text](https://github.com/dungngminh/ToDo-app/blob/master/screenshots/screen%20with%20some%20todo.png)
+
+
 
 ## Getting Started
 
