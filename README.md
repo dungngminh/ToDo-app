@@ -4,13 +4,13 @@ A new To Do app using Flutter and Hive DB for training skill on using local DB w
 
 ## Some Screenshots
 
-MainScreen
+### Main Screen
 ![alt text](https://github.com/dungngminh/ToDo-app/blob/master/screenshots/mainscreen.png)
 
-Add To Do Screen
+### Add To Do Screen
 ![alt text](https://github.com/dungngminh/ToDo-app/blob/master/screenshots/add%20to%20do.png)
 
-Screen with some Todos
+### Screen with some Todos
 ![alt text](https://github.com/dungngminh/ToDo-app/blob/master/screenshots/screen%20with%20some%20todo.png)
 
 
