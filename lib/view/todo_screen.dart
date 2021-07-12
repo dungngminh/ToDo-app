@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:todo_hive/model/todo.dart';
-import 'package:todo_hive/view/add_todo.dart';
 
 class ToDoScreen extends StatefulWidget {
   @override
@@ -10,6 +9,10 @@ class ToDoScreen extends StatefulWidget {
 }
 
 class _ToDoScreenState extends State<ToDoScreen> {
+  final _titleController = TextEditingController();
+  final _descriptionController = TextEditingController();
+
+  final formKey = GlobalKey<FormState>();
   @override
   void dispose() {
     Hive.close(); // close all boxes
@@ -23,7 +26,7 @@ class _ToDoScreenState extends State<ToDoScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "ToDo App",
+          "ToDo",
           style: TextStyle(
             color: Colors.black,
             fontSize: 24,
@@ -47,11 +50,12 @@ class _ToDoScreenState extends State<ToDoScreen> {
             itemBuilder: (_, index) {
               ToDo toDo = box.getAt(index)!;
               return ListTile(
+                tileColor: Colors.white,
                 onLongPress: () async {
                   await box.deleteAt(index);
                 },
                 title: Text(
-                  toDo.title ?? "",
+                  toDo.title!,
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -70,14 +74,61 @@ class _ToDoScreenState extends State<ToDoScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         isExtended: true,
-        onPressed: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (_) => AddTodo(),
-          ),
-        ),
+        onPressed: () => _displayDialog(context),
         child: Icon(Icons.add),
       ),
+    );
+  }
+
+  Future _displayDialog(BuildContext _) async {
+    return showDialog(
+      context: _,
+      builder: (_) {
+        return AlertDialog(
+          title: Text("New TO DO"),
+          content: Form(
+            key: formKey,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TextFormField(
+                  validator: (value) =>
+                      value != '' ? null : 'Please provide TO DO title',
+                  controller: _titleController,
+                  decoration: InputDecoration(hintText: 'Title'),
+                ),
+                TextFormField(
+                  controller: _descriptionController,
+                  decoration: InputDecoration(hintText: 'Description'),
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () async {
+                if (formKey.currentState!.validate()) {
+                  print(_titleController.text);
+                  print(_descriptionController.text);
+                  var box = Hive.box<ToDo>("todos");
+                  box.add(
+                    ToDo(
+                      title: _titleController.text,
+                      description: _descriptionController.text,
+                    ),
+                  );
+                  Navigator.pop(context);
+                }
+              },
+              child: Text('OK'),
+            ),
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text('Cancel'),
+            ),
+          ],
+        );
+      },
     );
   }
 }

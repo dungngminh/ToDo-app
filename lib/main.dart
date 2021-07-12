@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "TODO App",
       theme: ThemeData(
+        scaffoldBackgroundColor: Colors.grey.shade200,
         primarySwatch: Colors.blue,
         appBarTheme: AppBarTheme(
           textTheme: TextTheme(
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.grey.shade200,
           elevation: 0,
           iconTheme: IconThemeData(
             color: Colors.black,
