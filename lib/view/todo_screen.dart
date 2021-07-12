@@ -117,13 +117,19 @@ class _ToDoScreenState extends State<ToDoScreen> {
                       description: _descriptionController.text,
                     ),
                   );
+                  _titleController.clear();
+                  _descriptionController.clear();
                   Navigator.pop(context);
                 }
               },
               child: Text('OK'),
             ),
             TextButton(
-              onPressed: () => Navigator.pop(context),
+              onPressed: () {
+                _titleController.clear();
+                _descriptionController.clear();
+                Navigator.pop(context);
+              },
               child: Text('Cancel'),
             ),
           ],
